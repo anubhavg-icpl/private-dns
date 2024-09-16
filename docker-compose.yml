@@ -11,14 +11,14 @@ services:
       - ./Corefile:/Corefile
     networks:
       dns_network:
-        ipv4_address: 172.18.0.2
+        ipv4_address: 172.20.0.2
 
   client1:
     image: alpine
     container_name: dns_client1
     command: tail -f /dev/null
     dns:
-      - 172.18.0.2
+      - 172.20.0.2
     networks:
       - dns_network
 
@@ -27,7 +27,7 @@ services:
     container_name: dns_client2
     command: tail -f /dev/null
     dns:
-      - 172.18.0.2
+      - 172.20.0.2
     networks:
       - dns_network
 
@@ -36,4 +36,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.18.0.0/16
+        - subnet: 172.20.0.0/16
