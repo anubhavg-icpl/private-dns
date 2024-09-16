@@ -1,0 +1,39 @@
+version: '3'
+
+services:
+  coredns:
+    image: coredns/coredns
+    container_name: coredns_server
+    ports:
+      - "53:53/udp"
+      - "53:53/tcp"
+    volumes:
+      - ./Corefile:/Corefile
+    networks:
+      dns_network:
+        ipv4_address: 172.18.0.2
+
+  client1:
+    image: alpine
+    container_name: dns_client1
+    command: tail -f /dev/null
+    dns:
+      - 172.18.0.2
+    networks:
+      - dns_network
+
+  client2:
+    image: alpine
+    container_name: dns_client2
+    command: tail -f /dev/null
+    dns:
+      - 172.18.0.2
+    networks:
+      - dns_network
+
+networks:
+  dns_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.18.0.0/16

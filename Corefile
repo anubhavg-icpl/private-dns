@@ -1,0 +1,10 @@
+.:53 {
+    hosts {
+        172.18.0.10 testingisanubhav.local
+        172.18.0.20 anubhavistesting.local
+        fallthrough
+    }
+    forward . 8.8.8.8 8.8.4.4
+    log
+    errors
+}
