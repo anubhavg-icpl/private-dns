@@ -1,7 +1,7 @@
-.:53 {
+.:5353 {
     hosts {
-        172.20.0.10 testingisanubhav.local
-        172.20.0.20 anubhavistesting.local
+        172.20.0.10 anubhavistesting.local
+        172.20.0.20 testingisanubhav.local
         fallthrough
     }
     forward . 8.8.8.8 8.8.4.4

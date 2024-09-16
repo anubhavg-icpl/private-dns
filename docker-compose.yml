@@ -1,12 +1,10 @@
-version: '3'
-
 services:
   coredns:
     image: coredns/coredns
     container_name: coredns_server
     ports:
-      - "53:53/udp"
-      - "53:53/tcp"
+      - "5353:5353/udp"
+      - "5353:5353/tcp"
     volumes:
       - ./Corefile:/Corefile
     networks:
